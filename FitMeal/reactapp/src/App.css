@@ -1,38 +1,118 @@
-.App {
-  text-align: center;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat, Arial;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root {
+    position: relative;
+    min-height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.background-light-primary {
+    background-color: white;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.background-light-secondary {
+    background-color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.background-light-tertiary {
+    background-color: #202A44;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.background-dark-primary {
+    background-color: #1e1e1e;
+}
+
+.background-dark-secondary {
+    background-color: #3e3e42;
+}
+
+.background-dark-tertiary {
+    background-color: #1e1e1e;
+}
+
+.background-picture-light {
+    background-image: url('../public/images/HomeSectionBackgroundLight.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-x: right;
+    background-position-y: center;
+    background-size: cover;
+}
+
+.background-picture-dark {
+    background-image: url('../public/images/HomeSectionBackgroundDark.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-x: right;
+    background-position-y: center;
+    background-size: cover;
+}
+
+.button-light-primary {
+    background-color: #75bd15;
+}
+
+.button-light-secondary {
+    background-color: #202A44;
+}
+
+.button-dark-primary {
+    background-color: #75bd15;
+}
+
+.button-dark-secondary {
+    background-color: #3e3e42;
+}
+
+.text-light-primary {
+    color: black;
+}
+
+.text-light-secondary {
+    color: white;
+}
+
+.text-light-tertiary {
+    color: #75bd15;
+}
+
+.text-dark-primary {
+    color: white;
+}
+
+.text-dark-secondary {
+    color: white;
+}
+
+.text-dark-tertiary {
+    color: #75bd15;
+}
+
+.logo-light {
+    color: #75bd15;
+}
+
+.logo-dark {
+    color: white;
+}
+
+.border-light-primary {
+    border: 1px solid #75bd15;
+}
+
+.border-dark-primary {
+    border: 1px solid #3e3e42;
+}
+
+@media (max-width: 640px) {
+    .background-picture-light {
+        background-image: url('../public/images/HomeSectionBackgroundLightPhone.jpg');
+    }
+
+    .background-picture-dark {
+        background-image: url('../public/images/HomeSectionBackgroundDarkPhone.jpg');
+    }
 }
