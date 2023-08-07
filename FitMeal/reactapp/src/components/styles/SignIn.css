@@ -156,9 +156,9 @@
         font-size: 15px;
     }
 
-        .sign-in-password input {
-            width: calc(100% - 20px);
-        }
+    .sign-in-password input {
+        width: calc(100% - 20px);
+    }
 
     .sign-in-password-eye {
         position: absolute;
