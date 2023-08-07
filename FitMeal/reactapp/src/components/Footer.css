@@ -1,0 +1,143 @@
+.footer {
+    display: flex;
+    height: 500px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-top: 20px;
+    box-shadow: 0 -3px 7px rgba(200, 200, 200, 0.6);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.footer-text {
+    font-size: 18px;
+}
+
+.footer-theme {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.footer-theme-button {
+    height: 42px;
+    width: 100px;
+    border-radius: 20px;
+    margin-left: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color, border 0.3s;
+}
+
+.footer-theme-switch {
+    transition: all 0.3s;
+}
+
+.footer-theme-switch-light {
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 18px;
+    position: absolute;
+    left: 2px;
+    right: 98px;
+    top: 2px;
+    bottom: 2px;
+    cursor: pointer;
+}
+
+.footer-theme-switch-dark {
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 18px;
+    position: absolute;
+    left: 60px;
+    right: 2px;
+    top: 2px;
+    bottom: 2px;
+    cursor: pointer;
+}
+
+.footer-theme-sun {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 5px;
+    right: 0px;
+    top: 4px;
+    bottom: 4px;
+}
+
+.footer-theme-moon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 62px;
+    right: 2px;
+    top: 4px;
+    bottom: 1px;
+}
+
+@media (max-width: 640px) {
+    .footer {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .footer-text {
+        font-size: 15px;
+    }
+
+    .footer-theme {
+        display: flex;
+        align-items: center;
+        height: 40px;
+    }
+
+    .footer-theme-button {
+        height: 30px;
+        width: 76px;
+        border-radius: 15px;
+        margin-left: 5px;
+    }
+
+    .footer-theme-switch-light {
+        width: 24px;
+        height: 24px;
+        border-radius: 12px;
+        left: 2px;
+        right: 74px;
+    }
+
+    .footer-theme-switch-dark {
+        width: 24px;
+        height: 24px;
+        border-radius: 12px;
+        left: 48px;
+        right: 2px;
+    }
+
+    .footer-theme-sun {
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        left: 3px;
+        right: 0px;
+        top: 3px;
+        bottom: 2px;
+    }
+
+    .footer-theme-moon {
+        width: 22px;
+        height: 22px;
+        left: 49px;
+        right: 2px;
+        top: 3px;
+        bottom: 2px;
+    }
+}

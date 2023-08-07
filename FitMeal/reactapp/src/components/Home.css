@@ -1,0 +1,82 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: 100vh;
+    padding-top: 25px;
+    padding-bottom: 575px;
+    height: 100%;
+}
+
+.home-section {
+    display: flex;
+    width: 80%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.home-section-text {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.home-section-title {
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.home-section-paragraph {
+    margin-top: 50px;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.home-section-paragraph-bold {
+    font-weight: 900;
+}
+
+.home-button {
+    height: 60px;
+    width: 40%;
+    margin-left: 10%;
+    align-self: baseline;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.home-button:hover {
+     opacity: 0.9;
+}
+
+.home-button:active {
+    opacity: 0.7;
+}
+
+@media (max-width: 640px) {
+    .home-section-text {
+        width: 100%;
+    }
+
+    .home-section-title {
+        font-size: 30px;
+    }
+
+    .home-section-paragraph {
+        font-size: 18px;
+    }
+
+    .home-button {
+        height: 45px;
+        width: 80%;
+        margin-right: 10%;
+        border-radius: 15px;
+        font-size: 18px;
+    }
+}

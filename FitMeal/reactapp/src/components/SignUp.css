@@ -1,0 +1,170 @@
+.sign-up {
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: 100vh;
+    padding-top: 25px;
+    padding-bottom: 575px;
+    height: 100%;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 25%;
+    margin-right: 25%;
+    align-self: center;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.sign-up-title {
+    align-self: center;
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 50px;
+}
+
+.sign-up-label {
+    width: 100%;
+    word-wrap: break-word;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.sign-up-input {
+    height: 25px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.sign-up-error {
+    font-size: 15px;
+    font-weight: 500;
+    color: red;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.sign-up-button {
+    height: 45px;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: opacity 0.15s;
+    color: white;
+    background-color: #75bd15;
+    border: none;
+}
+
+.sign-up-button:hover {
+    opacity: 0.9;
+}
+
+.sign-up-button:active {
+opacity: 0.7;
+}
+
+.sign-up-question {
+    max-width: 100%;
+    align-self: center;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.sign-up-answer {
+    max-width: 100%;
+    align-self: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: #75bd15;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.sign-up-answer:hover {
+    text-decoration: underline;
+}
+
+.sign-up-password {
+    position: relative;
+}
+
+.sign-up-password input {
+    width: calc(100% - 20px);
+}
+
+.sign-up-password-eye {
+    position: absolute;
+    height: 30px;
+    right: 10px;
+    top: 8px;
+    cursor: pointer;
+}
+
+@media (max-width: 640px) {
+    .sign-up {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .sign-up-form {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 10px;
+    }
+
+    .sign-up-title {
+        font-size: 30px;
+        margin-bottom: 35px;
+    }
+
+    .sign-up-label {
+        font-size: 18px;
+    }
+
+    .sign-up-input {
+        height: 15px;
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    .sign-up-error {
+        font-size: 12px;
+        font-weight: 500;
+        color: red;
+        padding: 5px;
+    }
+
+    .sign-up-button {
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .sign-up-question {
+        font-size: 15px;
+    }
+
+    .sign-up-answer {
+        font-size: 15px;
+    }
+
+    .sign-up-password input {
+        width: calc(100% - 20px);
+    }
+
+    .sign-up-password-eye {
+        position: absolute;
+        height: 25px;
+        right: 5px;
+        top: 6px;
+        cursor: pointer;
+    }
+}

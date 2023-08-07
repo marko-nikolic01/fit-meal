@@ -1,0 +1,170 @@
+.sign-in {
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: 100vh;
+    padding-top: 25px;
+    padding-bottom: 575px;
+    height: 100%;
+}
+
+.sign-in-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 25%;
+    margin-right: 25%;
+    align-self: center;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.sign-in-title {
+    align-self: center;
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 50px;
+}
+
+.sign-in-label {
+    width: 100%;
+    word-wrap: break-word;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.sign-in-input {
+    height: 25px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.sign-in-error {
+    font-size: 15px;
+    font-weight: 500;
+    color: red;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.sign-in-button {
+    height: 45px;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: opacity 0.15s;
+    color: white;
+    background-color: #75bd15;
+    border: none;
+}
+
+.sign-in-button:hover {
+    opacity: 0.9;
+}
+
+.sign-in-button:active {
+    opacity: 0.7;
+}
+
+.sign-in-question {
+    max-width: 100%;
+    align-self:center;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.sign-in-answer {
+    max-width: 100%;
+    align-self: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: #75bd15;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.sign-in-answer:hover {
+    text-decoration: underline;
+}
+
+.sign-in-password{
+    position: relative;
+}
+
+.sign-in-password input {
+    width: calc(100% - 20px);
+}
+
+.sign-in-password-eye {
+    position: absolute;
+    height: 30px;
+    right: 10px;
+    top: 8px;
+    cursor: pointer;
+}
+
+@media (max-width: 640px) {
+    .sign-in {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .sign-in-form {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 10px;
+    }
+
+    .sign-in-title {
+        font-size: 30px;
+        margin-bottom: 35px;
+    }
+
+    .sign-in-label {
+        font-size: 18px;
+    }
+
+    .sign-in-input {
+        height: 15px;
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    .sign-in-error {
+        font-size: 12px;
+        font-weight: 500;
+        color: red;
+        padding: 5px;
+    }
+
+    .sign-in-button {
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .sign-in-question {
+        font-size: 15px;
+    }
+
+    .sign-in-answer {
+        font-size: 15px;
+    }
+
+        .sign-in-password input {
+            width: calc(100% - 20px);
+        }
+
+    .sign-in-password-eye {
+        position: absolute;
+        height: 25px;
+        right: 5px;
+        top: 6px;
+        cursor: pointer;
+    }
+}
