@@ -1,8 +1,4 @@
-import { useState } from 'react'
-import { Link } from "react-router-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import './Footer.css'
+import './styles/Footer.css'
 
 function Footer(props) {
     const { theme, toggleTheme } = props

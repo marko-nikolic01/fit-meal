@@ -1,8 +1,5 @@
-import { useState } from 'react'
-import { Link } from "react-router-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useLocation, useNavigate } from "react-router-dom";
-import './Header.css'
+import { useNavigate } from "react-router-dom";
+import './styles/Header.css'
 
 function Header(props) {
     const { theme } = props
