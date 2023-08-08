@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FitMealModels
+namespace FitMealModels.DTO
 {
-    public class User
+    public class SignUpDTO
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
-
         [Required(ErrorMessage = "E-mail is required.")]
         [MaxLength(254)]
         [DataType(DataType.EmailAddress)]
@@ -22,7 +16,7 @@ namespace FitMealModels
         public string Email { get; set; }
 
 
-        [Required(ErrorMessage = "Username is required.")]
+        [Required(ErrorMessage = "Username password is required.")]
         [MaxLength(30)]
         public string Username { get; set; }
 
@@ -32,15 +26,25 @@ namespace FitMealModels
         [DataType(DataType.Password)]
         [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$", 
             ErrorMessage = "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and no spaces.")]
+        [Compare("RepeatPassword", ErrorMessage = "Passwords do not match.")]
         public string Password { get; set; }
 
 
-        public User()
+        [Required(ErrorMessage = "Repeat password is required.")]
+        [MaxLength(30)]
+        [DataType(DataType.Password)]
+        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$", 
+            ErrorMessage = "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and no spaces.")]
+        [Compare("Password", ErrorMessage = "Passwords do not match.")]
+        public string RepeatPassword { get; set; }
+
+
+        public SignUpDTO()
         {
-            this.Id = 0;
             this.Email = "";
             this.Username = "";
             this.Password = "";
+            this.RepeatPassword = "";
         }
     }
 }
