@@ -47,7 +47,6 @@ function SignIn(props) {
 
     function signIn() {
         setValidationErrors(() => validate(form))
-        console.log(validationErrors.email + " " + validationErrors.password)
         if (validationErrors.email || validationErrors.password) {
             return
         }

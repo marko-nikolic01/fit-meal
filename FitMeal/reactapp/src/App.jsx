@@ -8,7 +8,13 @@ import SignIn from './components/SignIn.jsx'
 import SignUp from './components/SignUp.jsx'
 
 function App() {
-    const [theme, setTheme] = useState("light")
+    const [theme, setTheme] = useState(() => {
+        const themeFromStorage = localStorage.getItem("theme")
+        if (themeFromStorage == null) {
+            return "light"
+        }
+        return themeFromStorage
+    })
 
     function toggleTheme() {
         let newTheme
@@ -19,6 +25,7 @@ function App() {
             newTheme = "light"
         }
         setTheme(() => newTheme)
+        localStorage.setItem("theme", newTheme)
     }
 
     return (
