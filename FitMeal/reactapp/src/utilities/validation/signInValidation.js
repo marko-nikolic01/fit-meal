@@ -19,7 +19,7 @@ function validateEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     const isValid = emailRegex.test(email)
     if (!isValid) {
-        errorMessages.email = "Invalid email format."
+        errorMessages.email = "Invalid e-mail format."
     }
 }
 
