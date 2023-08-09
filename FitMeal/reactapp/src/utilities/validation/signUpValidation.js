@@ -34,13 +34,19 @@ function validateEmail(email) {
     }
 }
 
-function validateUsername(password) {
-    if (password === "") {
+function validateUsername(username) {
+    if (username === "") {
         errorMessages.username = "Username is required."
         return
     }
 
-    if (password.length > 30) {
+    const usernameRegex = /^[a-zA-Z0-9_]+$/
+    const isValid = usernameRegex.test(username)
+    if (!isValid) {
+        errorMessages.username = "Username must only contain letters, digits, and underscores."
+    }
+
+    if (username.length > 30) {
         errorMessages.username = "Username can't be longer than 30 characters."
         return
     }

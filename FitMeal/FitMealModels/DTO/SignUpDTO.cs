@@ -18,6 +18,8 @@ namespace FitMealModels.DTO
 
         [Required(ErrorMessage = "Username is required.")]
         [MaxLength(30)]
+        [RegularExpression(@"^[a-zA-Z0-9_]+$",
+            ErrorMessage = "Username must only contain letters, digits, and underscores.")]
         public string Username { get; set; }
 
 
