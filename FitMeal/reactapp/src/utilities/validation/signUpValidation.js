@@ -27,11 +27,22 @@ function validateEmail(email) {
     if (!isValid) {
         errorMessages.email = "Invalid e-mail format."
     }
+
+    if (email.length > 254) {
+        errorMessages.email = "E-mail can't be longer than 254 characters."
+        return
+    }
 }
 
 function validateUsername(password) {
     if (password === "") {
         errorMessages.username = "Username is required."
+        return
+    }
+
+    if (password.length > 30) {
+        errorMessages.username = "Username can't be longer than 30 characters."
+        return
     }
 }
 
@@ -39,11 +50,43 @@ function validatePassword(password) {
     if (password === "") {
         errorMessages.password = "Password is required."
     }
+
+    if (password.length < 8) {
+        errorMessages.password = "Password can't be shorter than 8 characters."
+        return
+    }
+
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/
+    const isValid = passwordRegex.test(password)
+    if (!isValid) {
+        errorMessages.password = "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and no spaces."
+    }
+
+    if (password.length > 30) {
+        errorMessages.password = "Password can't be longer than 30 characters."
+        return
+    }
 }
 
 function validateRepeatPassword(repeatPassword) {
     if (repeatPassword === "") {
         errorMessages.repeatPassword = "Password is required."
+    }
+
+    if (repeatPassword.length < 8) {
+        errorMessages.repeatPassword = "Password can't be shorter than 8 characters."
+        return
+    }
+
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/
+    const isValid = passwordRegex.test(repeatPassword)
+    if (!isValid) {
+        errorMessages.repeatPassword = "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and no spaces."
+    }
+
+    if (repeatPassword.length > 30) {
+        errorMessages.repeatPassword = "Password can't be longer than 30 characters."
+        return
     }
 }
 
