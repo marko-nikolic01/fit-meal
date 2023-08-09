@@ -20,14 +20,14 @@ namespace FitMealAPI.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [HttpPost]
-        [Route("/signup")]
+        [HttpPost("signup")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [Produces("application/json")]
         public ActionResult SignUp([FromBody] SignUpDTO dto)
         {
+            _logger.LogInformation("\nEmail: " + dto.Email + "\nUsername: " + dto.Username + "\nPassword: " + dto.Password + "\nRepeat Password: " + dto.RepeatPassword + "\n");
             if (!ModelState.IsValid)
             {
                 return BadRequest();

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import validate from "../utilities/validation/signUpValidation.js"
+import axios from "axios"
 import "./styles/SignUp.css"
 
 function SignIn(props) {
@@ -58,10 +59,28 @@ function SignIn(props) {
     }
 
     function signUp() {
-        setValidationErrors(() => validate(form))
-        if (validationErrors.email || validationErrors.username || validationErrors.password || validationErrors.repeatPassword) {
+        const errors = validate(form)
+        if (errors.email || errors.username || errors.password || errors.repeatPassword) {
+            setValidationErrors(errors)
             return
         }
+        handleSignUpRequest()
+    }
+
+    async function handleSignUpRequest() {
+        const errors = { email: "", username: "", password: "", repeatPassword: "" }
+        axios.post("https://localhost:7166/api/users/signup", form)
+            .then(response => {
+                setValidationErrors(errors)
+            })
+            .catch(error => {
+                if (error.response.status === 409) {
+                    errors.email = "Username or email is already in use."
+                    errors.username = "Username or email is already in use."
+                }
+                setValidationErrors(errors)
+            });
+        
     }
 
     return (
