@@ -16,7 +16,7 @@ namespace FitMealModels.DTO
         public string Email { get; set; }
 
 
-        [Required(ErrorMessage = "Username password is required.")]
+        [Required(ErrorMessage = "Username is required.")]
         [MaxLength(30)]
         public string Username { get; set; }
 
@@ -24,7 +24,7 @@ namespace FitMealModels.DTO
         [Required(ErrorMessage = "Password is required.")]
         [MaxLength(30)]
         [DataType(DataType.Password)]
-        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$", 
+        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$", 
             ErrorMessage = "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and no spaces.")]
         [Compare("RepeatPassword", ErrorMessage = "Passwords do not match.")]
         public string Password { get; set; }
@@ -33,7 +33,7 @@ namespace FitMealModels.DTO
         [Required(ErrorMessage = "Repeat password is required.")]
         [MaxLength(30)]
         [DataType(DataType.Password)]
-        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$", 
+        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$", 
             ErrorMessage = "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and no spaces.")]
         [Compare("Password", ErrorMessage = "Passwords do not match.")]
         public string RepeatPassword { get; set; }
