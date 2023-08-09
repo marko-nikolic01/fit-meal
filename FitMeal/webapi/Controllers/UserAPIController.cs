@@ -20,17 +20,17 @@ namespace FitMealAPI.Controllers
 
         [HttpPost]
         [Route("/signup")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SignUpDTO>))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Produces("application/json")]
         public ActionResult SignUp([FromBody] SignUpDTO user)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _logger.LogInformation("Valid");
-                return Ok(user);
+                return BadRequest();
             }
-            _logger.LogInformation("Invalid");
-            return BadRequest(user);
+
+            return Ok();
         }
     }
 }
