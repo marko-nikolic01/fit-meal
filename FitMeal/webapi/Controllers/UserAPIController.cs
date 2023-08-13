@@ -45,7 +45,7 @@ namespace FitMealAPI.Controllers
             _signUpService.SignUp(user);
             string token = _JWTService.Generate(user);
             _logger.LogInformation("\n\n" + token + "\n\n");
-            return Ok(token);
+            return Ok(new { Token = token });
         }
     }
 }

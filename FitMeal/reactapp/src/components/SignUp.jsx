@@ -72,6 +72,8 @@ function SignIn(props) {
         axios.post("https://localhost:7166/api/users/signup", form)
             .then(response => {
                 setValidationErrors(errors)
+                const token = response.data.token;
+                localStorage.setItem("jwt", token);
             })
             .catch(error => {
                 if (error.response.status === 409) {
