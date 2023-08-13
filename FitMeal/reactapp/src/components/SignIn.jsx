@@ -7,11 +7,11 @@ function SignIn(props) {
     const { theme } = props
     const [eye, setEye] = useState("opened")
     const [form, setForm] = useState({
-        email: "",
+        emailOrUsername: "",
         password: ""
     })
     const [validationErrors, setValidationErrors] = useState({
-        email: "",
+        emailOrUsername: "",
         password: ""
     })
 
@@ -47,7 +47,7 @@ function SignIn(props) {
 
     function signIn() {
         setValidationErrors(() => validate(form))
-        if (validationErrors.email || validationErrors.password) {
+        if (validationErrors.emailOrUsername || validationErrors.password) {
             return
         }
     }
@@ -57,9 +57,9 @@ function SignIn(props) {
             <div className={`sign-in background-${theme}-secondary background-picture-${theme}`}>
                 <div className={`sign-in-form background-${theme}-primary border-${theme}-primary`}>
                     <div className={`sign-in-title text-${theme}-primary`}>Sign in</div>
-                    <div className={`sign-in-label text-${theme}-primary`}>E-mail:</div>
-                    <input className={`sign-in-input text-${theme}-primary background-${theme}-primary border-${theme}-primary`} type="email" placeholder="Enter e-mail" name="email" value={form.email} onChange={handleChange} />
-                    <div className="sign-in-error">{validationErrors.email}</div>
+                    <div className={`sign-in-label text-${theme}-primary`}>E-mail or username:</div>
+                    <input className={`sign-in-input text-${theme}-primary background-${theme}-primary border-${theme}-primary`} type="text" placeholder="Enter e-mail or username" name="emailOrUsername" value={form.emailOrUsername} onChange={handleChange} />
+                    <div className="sign-in-error">{validationErrors.emailOrUsername}</div>
                     <div className={`sign-in-label text-${theme}-primary`}>Password:</div>
                     <div className="sign-in-password">
                         <input className={`sign-in-input text-${theme}-primary background-${theme}-primary border-${theme}-primary`} type={eye === "opened" ? "password" : "text"} placeholder="Enter password" name="password" value={form.password} onChange={handleChange} />

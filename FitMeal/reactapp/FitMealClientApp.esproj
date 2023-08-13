@@ -12,6 +12,7 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\build</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="src\utilities\authentication\" />
     <Folder Include="src\utilities\validation\" />
   </ItemGroup>
 </Project>

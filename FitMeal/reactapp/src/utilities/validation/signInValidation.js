@@ -1,29 +1,30 @@
 let errorMessages
 function validate(signInForm) {
-    const { email, password } = signInForm
+    const { emailOrUsername, password } = signInForm
     errorMessages = {
-        email: "",
+        emailOrUsername: "",
         password: ""
     }
-    validateEmail(email)
+    validateEmailOrUsername(emailOrUsername)
     validatePassword(password)
     return errorMessages
 }
 
-function validateEmail(email) {
-    if (email === "") {
-        errorMessages.email = "E-mail is required."
+function validateEmailOrUsername(emailOrUsername) {
+    if (emailOrUsername === "") {
+        errorMessages.emailOrUsername = "E-mail or username is required."
         return
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    const isValid = emailRegex.test(email)
+    const usernameRegex = /^[a-zA-Z0-9_]+$/
+    const isValid = emailRegex.test(emailOrUsername) || usernameRegex.test(emailOrUsername)
     if (!isValid) {
-        errorMessages.email = "Invalid e-mail format."
+        errorMessages.emailOrUsername = "Invalid e-mail or username format."
     }
 
-    if (email.length > 254) {
-        errorMessages.email = "E-mail can't be longer than 254 characters."
+    if (emailOrUsername.length > 254) {
+        errorMessages.emailOrUsername = "E-mail or username can't be longer than 254 characters."
         return
     }
 }
