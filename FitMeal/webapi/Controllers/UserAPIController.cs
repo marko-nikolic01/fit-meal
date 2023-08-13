@@ -47,5 +47,29 @@ namespace FitMealAPI.Controllers
             _logger.LogInformation("\n\n" + token + "\n\n");
             return Ok(new { Token = token });
         }
+
+        [HttpPost("signin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [Produces("application/json")]
+        public ActionResult SignIn([FromBody] SignUpDTO dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            if (_signUpService.IsUsernameOrEmailTaken(dto.Username, dto.Email))
+            {
+                return Conflict("Username or email is already in use.");
+            }
+
+            User user = new User(dto.Email, dto.Username, dto.Password);
+            _signUpService.SignUp(user);
+            string token = _JWTService.Generate(user);
+            _logger.LogInformation("\n\n" + token + "\n\n");
+            return Ok(new { Token = token });
+        }
     }
 }
