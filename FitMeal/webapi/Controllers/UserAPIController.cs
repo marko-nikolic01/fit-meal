@@ -41,7 +41,7 @@ namespace FitMealAPI.Controllers
 
             if (_signUpService.IsUsernameOrEmailTaken(dto.Username, dto.Email))
             {
-                return Conflict("Username or email is already in use.");
+                return Conflict(new { Message = "Username or email is already in use." });
             }
 
             User user = new User(dto.Email, dto.Username, dto.Password);
@@ -55,6 +55,7 @@ namespace FitMealAPI.Controllers
         [HttpPost("signin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Produces("application/json")]
         public ActionResult SignIn([FromBody] SignInDTO dto)
         {
@@ -63,13 +64,12 @@ namespace FitMealAPI.Controllers
                 return BadRequest();
             }
 
-            if (_signUpService.IsUsernameOrEmailTaken(dto.Username, dto.Email))
+            User user = _signInService.SignIn(dto.EmailOrUsername, dto.Password);
+            if (user == null)
             {
-                return Conflict("Username or email is already in use.");
+                return Unauthorized(new { Message = "Invalid credentials" });
             }
 
-            User user = new User(dto.Email, dto.Username, dto.Password);
-            _signUpService.SignUp(user);
             string token = _JWTService.Generate(user);
             _logger.LogInformation("\n\n" + token + "\n\n");
             return Ok(new { Token = token });
