@@ -15,14 +15,17 @@ namespace FitMealAPI.Controllers
     public class PropertyAPIController : ControllerBase
     {
         private readonly ILogger<PropertyAPIController> _logger;
-        private readonly ISignUpService _signUpService;
         private readonly IJWTService _JWTService;
-        public PropertyAPIController(ILogger<PropertyAPIController> logger, ISignUpService signUpService, IJWTService jWTService)
+        private readonly ISignUpService _signUpService;
+        private readonly ISignInService _signInService;
+        public PropertyAPIController(ILogger<PropertyAPIController> logger, IJWTService jWTService, ISignUpService signUpService, ISignInService signInService)
         {
             this._logger = logger;
             this._signUpService = signUpService;
             this._JWTService = jWTService;
+            this._signInService = signInService;
         }
+
 
         [HttpPost("signup")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -48,12 +51,12 @@ namespace FitMealAPI.Controllers
             return Ok(new { Token = token });
         }
 
+
         [HttpPost("signin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status409Conflict)]
         [Produces("application/json")]
-        public ActionResult SignIn([FromBody] SignUpDTO dto)
+        public ActionResult SignIn([FromBody] SignInDTO dto)
         {
             if (!ModelState.IsValid)
             {
