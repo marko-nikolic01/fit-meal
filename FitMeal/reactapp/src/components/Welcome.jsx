@@ -1,7 +1,7 @@
 import {useNavigate } from "react-router-dom"
 import './styles/Home.css'
 
-function Home(props) {
+function Welcome(props) {
     const { theme } = props
 
     const navigate = useNavigate();
@@ -51,4 +51,4 @@ function Home(props) {
     )
 }
 
-export default Home
+export default Welcome
