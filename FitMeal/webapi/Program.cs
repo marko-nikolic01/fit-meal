@@ -21,7 +21,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IJWTService, JWTService>();
 builder.Services.AddScoped<ISignUpService, SignUpService>();
-builder.Services.AddScoped<ISignInService, ISignInService>();
+builder.Services.AddScoped<ISignInService, SignInService>();
 
 // Enable CORS
 builder.Services.AddCors(options =>

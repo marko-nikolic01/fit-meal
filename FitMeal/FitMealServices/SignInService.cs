@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FitMealServices
 {
-    internal class SignInService : ISignInService
+    public class SignInService : ISignInService
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -20,7 +20,8 @@ namespace FitMealServices
 
         public User SignIn(string emailOrUsername, string password)
         {
-            User user = _unitOfWork.UserRepository.GetFirstOrDefault(u => new[] { u.Email, u.Username }.Contains(emailOrUsername));
+            User user = _unitOfWork.UserRepository.GetFirstOrDefault(u => 
+                (u.Email == emailOrUsername || u.Username == emailOrUsername) && u.Password == password);
             return user;
         }
     }
