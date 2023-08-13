@@ -12,6 +12,6 @@ namespace FitMealServices.IService
     public interface ISignUpService
     {
         bool IsUsernameOrEmailTaken(string username, string email);
-        User SignUp(User user);
+        void SignUp(User user);
     }
 }

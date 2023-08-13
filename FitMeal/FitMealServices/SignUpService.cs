@@ -25,11 +25,10 @@ namespace FitMealServices
             return conflictedUser != null;
         }
 
-        public User SignUp(User user)
+        public void SignUp(User user)
         {
             _unitOfWork.UserRepository.Add(user);
             _unitOfWork.Save();
-            return user;
         }
     }
 }
