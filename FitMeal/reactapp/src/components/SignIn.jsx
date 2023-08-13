@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import validate from "../utilities/validation/signInValidation.js"
+import { setToken } from "../utilities/security/JWTSecurity.js"
 import axios from "axios"
 import "./styles/SignIn.css"
 
@@ -63,16 +64,15 @@ function SignIn(props) {
 
     async function handleSignInRequest() {
         const errors = { emailOrUsername: "", password: "" }
-        axios.post("https://localhost:7166/api/users/signup", form)
+        axios.post("https://localhost:7166/api/users/signin", form)
             .then(response => {
                 setValidationErrors(errors)
-                const token = response.data.token;
-                localStorage.setItem("jwt", token);
+                setToken(response.data.token)
             })
             .catch(error => {
-                if (error.response.status === 409) {
-                    errors.email = "Username or email is already in use."
-                    errors.username = "Username or email is already in use."
+                if (error.response.status === 401) {
+                    errors.email = "Invalid credentials."
+                    errors.username = "Invalid credentials."
                 }
                 setValidationErrors(errors)
             });

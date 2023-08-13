@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import validate from "../utilities/validation/signUpValidation.js"
+import { setToken } from "../utilities/security/JWTSecurity.js"
 import axios from "axios"
 import "./styles/SignUp.css"
 
@@ -72,8 +73,7 @@ function SignIn(props) {
         axios.post("https://localhost:7166/api/users/signup", form)
             .then(response => {
                 setValidationErrors(errors)
-                const token = response.data.token;
-                localStorage.setItem("jwt", token);
+                setToken(response.data.token)
             })
             .catch(error => {
                 if (error.response.status === 409) {
