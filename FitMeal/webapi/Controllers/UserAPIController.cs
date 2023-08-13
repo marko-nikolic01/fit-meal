@@ -2,6 +2,8 @@
 using FitMealDataAccess.Repository.IRepository;
 using FitMealModels;
 using FitMealModels.DTO;
+using FitMealServices;
+using FitMealServices.IService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -13,11 +15,13 @@ namespace FitMealAPI.Controllers
     public class PropertyAPIController : ControllerBase
     {
         private readonly ILogger<PropertyAPIController> _logger;
-        private readonly IUnitOfWork _unitOfWork;
-        public PropertyAPIController(ILogger<PropertyAPIController> logger, IUnitOfWork unitOfWork)
+        private readonly ISignUpService _signUpService;
+        private readonly IJWTService _JWTService;
+        public PropertyAPIController(ILogger<PropertyAPIController> logger, ISignUpService signUpService, IJWTService jWTService)
         {
-            _logger = logger;
-            _unitOfWork = unitOfWork;
+            this._logger = logger;
+            this._signUpService = signUpService;
+            this._JWTService = jWTService;
         }
 
         [HttpPost("signup")]
@@ -27,23 +31,21 @@ namespace FitMealAPI.Controllers
         [Produces("application/json")]
         public ActionResult SignUp([FromBody] SignUpDTO dto)
         {
-            _logger.LogInformation("\nEmail: " + dto.Email + "\nUsername: " + dto.Username + "\nPassword: " + dto.Password + "\nRepeat Password: " + dto.RepeatPassword + "\n");
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            User conflictedUser = _unitOfWork.UserRepository.GetFirstOrDefault(u =>
-                u.Username == dto.Username || u.Email == dto.Email);
-            if (conflictedUser != null)
+            if (_signUpService.IsUsernameOrEmailTaken(dto.Username, dto.Email))
             {
                 return Conflict("Username or email is already in use.");
             }
 
             User user = new User(dto.Email, dto.Username, dto.Password);
-            _unitOfWork.UserRepository.Add(user);
-            _unitOfWork.Save();
-            return Ok();
+            _signUpService.SignUp(user);
+            string token = _JWTService.Generate(user);
+            _logger.LogInformation("\n\n" + token + "\n\n");
+            return Ok(token);
         }
     }
 }

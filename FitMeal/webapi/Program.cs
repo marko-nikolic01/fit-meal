@@ -2,6 +2,8 @@ using FitMealDataAccess.Context;
 using FitMealDataAccess.Repository.IRepository;
 using FitMealDataAccess.Repository;
 using Microsoft.EntityFrameworkCore;
+using FitMealServices.IService;
+using FitMealServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("LocalConnection"));
 });
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IJWTService, JWTService>();
+builder.Services.AddScoped<ISignUpService, SignUpService>();
 
 // Enable CORS
 builder.Services.AddCors(options =>
