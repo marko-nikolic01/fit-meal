@@ -1,15 +1,28 @@
-import {useNavigate } from "react-router-dom"
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { authorize } from "../utilities/security/JWTSecurity.js"
 import './styles/Welcome.css'
 
 function Welcome(props) {
     const { theme } = props
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const toSignUp = () => {
-        navigate('/signup');
-        window.scrollTo(0, 0);
+        navigate('/signup')
+        window.scrollTo(0, 0)
     }
+
+    const toHome = () => {
+        navigate('/home')
+        window.scrollTo(0, 0)
+    }
+
+    useEffect(() => {
+        if (authorize()) {
+            toHome()
+        }
+    }, [])
 
     return (
         <>

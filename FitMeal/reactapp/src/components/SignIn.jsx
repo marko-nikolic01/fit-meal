@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import validate from "../utilities/validation/signInValidation.js"
-import { setToken } from "../utilities/security/JWTSecurity.js"
+import { setToken, authorize } from "../utilities/security/JWTSecurity.js"
 import axios from "axios"
 import "./styles/SignIn.css"
 
@@ -32,6 +32,12 @@ function SignIn(props) {
         navigate('/home')
         window.scrollTo(0, 0)
     }
+
+    useEffect(() => {
+        if (authorize()) {
+            toHome()
+        }
+    }, [])
 
     function toggleEye() {
         let newEye

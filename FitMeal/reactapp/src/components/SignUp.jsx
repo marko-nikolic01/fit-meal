@@ -1,12 +1,12 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import validate from "../utilities/validation/signUpValidation.js"
-import { setToken } from "../utilities/security/JWTSecurity.js"
+import { setToken, authorize } from "../utilities/security/JWTSecurity.js"
 import axios from "axios"
 import "./styles/SignUp.css"
 
 function SignIn(props) {
-    const { theme } = props
+    const { theme, setIsUserAuthenticated } = props
     const [eye, setEye] = useState("opened")
     const [eyeRepeat, setEyeRepeat] = useState("opened")
     const [form, setForm] = useState({
@@ -28,6 +28,17 @@ function SignIn(props) {
         navigate("/signin");
         window.scrollTo(0, 0);
     }
+
+    const toHome = () => {
+        navigate('/home')
+        window.scrollTo(0, 0)
+    }
+
+    useEffect(() => {
+        if (authorize()) {
+            toHome()
+        }
+    }, [])
 
     function toggleEye() {
         let newEye
@@ -74,6 +85,8 @@ function SignIn(props) {
             .then(response => {
                 setValidationErrors(errors)
                 setToken(response.data.token)
+                setIsUserAuthenticated(true)
+                toHome()
             })
             .catch(error => {
                 if (error.response.status === 409) {

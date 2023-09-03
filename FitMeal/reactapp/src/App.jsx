@@ -38,7 +38,7 @@ function App() {
                 <Routes>
                     <Route index element={<Welcome theme={theme} />} />
                     <Route path="/signin" element={<SignIn theme={theme} setIsUserAuthenticated={setIsUserAuthenticated} />} />
-                    <Route path="/signup" element={<SignUp theme={theme} />} />
+                    <Route path="/signup" element={<SignUp theme={theme} setIsUserAuthenticated={setIsUserAuthenticated} />} />
                     <Route path="/home" element={<Home theme={theme} />} />
                 </Routes>
             </BrowserRouter>

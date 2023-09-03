@@ -13,6 +13,11 @@ function Header(props) {
         window.scrollTo(0, 0)
     }
 
+    const toHome = () => {
+        navigate('/home')
+        window.scrollTo(0, 0)
+    }
+
     const toSignIn = () => {
         navigate('/signin')
         window.scrollTo(0, 0)
@@ -32,7 +37,7 @@ function Header(props) {
     return (
         <>
             <div className={`header background-${theme}-primary`}>
-                <div className="header-logo" onClick={toWelcome}>
+                <div className="header-logo" onClick={isUserAuthenticated ? toHome : toWelcome}>
                     {theme === "light" && <img className="header-logo-icon" src="./images/FitMealLogoLight.svg" />}
                     {theme === "dark" && <img className="header-logo-icon" src="./images/FitMealLogoDark.svg" />}
                     <div className={`header-logo-text logo-${theme}`}>
