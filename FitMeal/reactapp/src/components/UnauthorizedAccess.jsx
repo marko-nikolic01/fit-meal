@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom"
-import './styles/Home.css'
 
 function UnauthorizedAccess(props) {
     const { theme } = props

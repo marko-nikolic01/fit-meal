@@ -1,8 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { authorize } from '../utilities/security/JWTSecurity'
-import './styles/Home.css'
-import UnauthorizedAccess from './components/UnauthorizedAccess.jsx'
+import UnauthorizedAccess from './UnauthorizedAccess.jsx'
 
 function Home(props) {
     const { theme } = props

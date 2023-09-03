@@ -6,7 +6,7 @@ import axios from "axios"
 import "./styles/SignIn.css"
 
 function SignIn(props) {
-    const { theme } = props
+    const { theme, setIsUserAuthenticated } = props
     const [eye, setEye] = useState("opened")
     const [form, setForm] = useState({
         emailOrUsername: "",
@@ -28,6 +28,11 @@ function SignIn(props) {
         window.scrollTo(0, 0);
     }
 
+    const toHome = () => {
+        navigate('/home')
+        window.scrollTo(0, 0)
+    }
+
     function toggleEye() {
         let newEye
         if (eye === "opened") {
@@ -47,13 +52,6 @@ function SignIn(props) {
         }))
     }
 
-    function signIfn() {
-        setValidationErrors(() => validate(form))
-        if (validationErrors.emailOrUsername || validationErrors.password) {
-            return
-        }
-    }
-
     function signIn() {
         setValidationErrors(() => validate(form))
         if (validationErrors.emailOrUsername || validationErrors.password) {
@@ -63,16 +61,18 @@ function SignIn(props) {
     }
 
     async function handleSignInRequest() {
-        const errors = { emailOrUsername: "", password: "" }
-        axios.post("https://localhost:7166/api/users/signin", form)
+        const errors = { emailOrUsername: '', password: '' }
+        axios.post('https://localhost:7166/api/users/signin', form)
             .then(response => {
                 setValidationErrors(errors)
                 setToken(response.data.token)
+                setIsUserAuthenticated(true)
+                toHome()
             })
             .catch(error => {
                 if (error.response.status === 401) {
-                    errors.email = "Invalid credentials."
-                    errors.username = "Invalid credentials."
+                    errors.email = 'Invalid credentials.'
+                    errors.username = 'Invalid credentials.'
                 }
                 setValidationErrors(errors)
             });
