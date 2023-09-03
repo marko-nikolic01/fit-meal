@@ -1,8 +1,12 @@
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { authorize } from '../utilities/security/JWTSecurity'
 import './styles/Home.css'
+import UnauthorizedAccess from './components/UnauthorizedAccess.jsx'
 
 function Home(props) {
     const { theme } = props
+    const [isUserSignedIn, setIsUserSignedIn] = useState(authorize())
 
     const navigate = useNavigate();
 
@@ -13,7 +17,10 @@ function Home(props) {
 
     return (
         <>
-            <div>Welcome!</div>
+            {isUserSignedIn
+                ? <div>Welcome!</div>
+                : <UnauthorizedAccess theme={theme} />
+            } 
         </>
     )
 }

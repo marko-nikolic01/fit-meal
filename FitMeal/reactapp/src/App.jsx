@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import "./App.css"
-import Welcome from "./components/Welcome.jsx"
-import Header from "./components/Header.jsx"
-import Footer from "./components/Footer.jsx"
-import SignIn from "./components/SignIn.jsx"
-import SignUp from "./components/SignUp.jsx"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import './App.css'
+import Welcome from './components/Welcome.jsx'
+import Header from './components/Header.jsx'
+import Footer from './components/Footer.jsx'
+import SignIn from './components/SignIn.jsx'
+import SignUp from './components/SignUp.jsx'
 
 function App() {
     const [theme, setTheme] = useState(() => {
