@@ -1,4 +1,6 @@
-﻿using FitMealServices.IService;
+﻿using FitMealModels;
+using FitMealServices.IService;
+using FitMealUtilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
@@ -30,14 +32,23 @@ namespace FitMealServices
         {
             try
             {
-                var requestUri = $"{_url}foods/search?api_key={_key}&query=cheese&data_type={Uri.EscapeDataString("Survey (FNDDS)")}&page_size=1";
+                var requestUri = $"{_url}foods/search?api_key={_key}&query=cheese&dataType={Uri.EscapeDataString("Survey (FNDDS)")}&pageSize=1";
 
                 var response = await _httpClient.GetAsync(requestUri);
 
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    _logger.LogInformation(content);
+                    FoodAPIResponseConverter converter = new FoodAPIResponseConverter();
+                    List<Food> foods = converter.ConvertFoodSearch(content);
+                    
+                    foreach (Food food in foods)
+                    {
+                        string log = "\nID: " + food.Id + "\nName: " + food.Name +
+                            "\nNutrition: " + "\n\tEnergy: " + food.Nutrition.Energy.Amount + "\n\tProtein: " + food.Nutrition.Protein.Amount + "\n\tCarbohydrates: " + food.Nutrition.Carbohydrates.Amount + "\n\tFats: " + food.Nutrition.Fats.Amount + "\n";
+                        _logger.LogInformation(log);
+                    }
+                    //_logger.LogInformation(content);
                     return content;
                 }
                 else

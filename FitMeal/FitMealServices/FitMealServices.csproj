@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FitMealDataAccess\FitMealDataAccess.csproj" />
     <ProjectReference Include="..\FitMealModels\FitMealModels.csproj" />
+    <ProjectReference Include="..\FitMealUtilities\FitMealUtilities.csproj" />
   </ItemGroup>
 
 </Project>

@@ -23,17 +23,17 @@ namespace FitMealModels
         public string Unit { get; set; }
 
 
-        [Required(ErrorMessage = "Ammount is required.")]
+        [Required(ErrorMessage = "Amount is required.")]
         [Range(0, 10000)]
-        public double Ammount { get; set; }
+        public double Amount { get; set; }
 
 
-        public Nutrient(int id, string name, string unit, double ammount)
+        public Nutrient(int id, string name, string unit, double amount)
         {
             this.Id = id;
             this.Name = name;
             this.Unit = unit;
-            this.Ammount = ammount;
+            this.Amount = amount;
         }
     }
 }
