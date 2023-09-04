@@ -22,6 +22,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IJWTService, JWTService>();
 builder.Services.AddScoped<ISignUpService, SignUpService>();
 builder.Services.AddScoped<ISignInService, SignInService>();
+builder.Services.AddScoped<IFoodAPIService, FoodAPIService>();
 
 // Enable CORS
 builder.Services.AddCors(options =>

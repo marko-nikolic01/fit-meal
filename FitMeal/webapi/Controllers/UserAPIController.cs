@@ -12,18 +12,20 @@ namespace FitMealAPI.Controllers
 {
     [ApiController]
     [Route("api/users")]
-    public class PropertyAPIController : ControllerBase
+    public class UserAPIController : ControllerBase
     {
-        private readonly ILogger<PropertyAPIController> _logger;
+        private readonly ILogger<UserAPIController> _logger;
         private readonly IJWTService _JWTService;
         private readonly ISignUpService _signUpService;
         private readonly ISignInService _signInService;
-        public PropertyAPIController(ILogger<PropertyAPIController> logger, IJWTService jWTService, ISignUpService signUpService, ISignInService signInService)
+        private readonly IFoodAPIService _foodAPIService;
+        public UserAPIController(ILogger<UserAPIController> logger, IJWTService jWTService, ISignUpService signUpService, ISignInService signInService, IFoodAPIService foodAPIService)
         {
             this._logger = logger;
             this._signUpService = signUpService;
             this._JWTService = jWTService;
             this._signInService = signInService;
+            _foodAPIService = foodAPIService;
         }
 
 
@@ -32,8 +34,10 @@ namespace FitMealAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [Produces("application/json")]
-        public ActionResult SignUp([FromBody] SignUpDTO dto)
+        public async Task<ActionResult> SignUp([FromBody] SignUpDTO dto)
         {
+            string foods = await _foodAPIService.GetFoods();
+
             if (!ModelState.IsValid)
             {
                 return BadRequest();
