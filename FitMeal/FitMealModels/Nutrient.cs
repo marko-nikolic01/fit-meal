@@ -26,5 +26,14 @@ namespace FitMealModels
         [Required(ErrorMessage = "Ammount is required.")]
         [Range(0, 10000)]
         public double Ammount { get; set; }
+
+
+        public Nutrient(int id, string name, string unit, double ammount)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Unit = unit;
+            this.Ammount = ammount;
+        }
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace FitMealUtilities
 {
-    internal class FoodSearchAPIResponseToFoodConverter
+    public class FoodAPIResponseConverter
     {
+        public FoodAPIResponseConverter() { }
     }
 }
