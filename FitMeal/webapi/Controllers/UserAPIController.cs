@@ -14,18 +14,14 @@ namespace FitMealAPI.Controllers
     [Route("api/users")]
     public class UserAPIController : ControllerBase
     {
-        private readonly ILogger<UserAPIController> _logger;
         private readonly IJWTService _JWTService;
         private readonly ISignUpService _signUpService;
         private readonly ISignInService _signInService;
-        private readonly IFoodAPIService _foodAPIService;
-        public UserAPIController(ILogger<UserAPIController> logger, IJWTService jWTService, ISignUpService signUpService, ISignInService signInService, IFoodAPIService foodAPIService)
+        public UserAPIController(IJWTService jWTService, ISignUpService signUpService, ISignInService signInService)
         {
-            this._logger = logger;
             this._signUpService = signUpService;
             this._JWTService = jWTService;
             this._signInService = signInService;
-            _foodAPIService = foodAPIService;
         }
 
 
@@ -36,8 +32,6 @@ namespace FitMealAPI.Controllers
         [Produces("application/json")]
         public async Task<ActionResult> SignUp([FromBody] SignUpDTO dto)
         {
-            string foods = await _foodAPIService.GetFoods();
-
             if (!ModelState.IsValid)
             {
                 return BadRequest();
@@ -51,7 +45,6 @@ namespace FitMealAPI.Controllers
             User user = new User(dto.Email, dto.Username, dto.Password);
             _signUpService.SignUp(user);
             string token = _JWTService.Generate(user);
-            _logger.LogInformation("\n\n" + token + "\n\n");
             return Ok(new { Token = token });
         }
 
@@ -75,7 +68,6 @@ namespace FitMealAPI.Controllers
             }
 
             string token = _JWTService.Generate(user);
-            _logger.LogInformation("\n\n" + token + "\n\n");
             return Ok(new { Token = token });
         }
     }

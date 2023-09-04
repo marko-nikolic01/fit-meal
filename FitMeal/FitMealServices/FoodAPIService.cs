@@ -13,15 +13,13 @@ namespace FitMealServices
 {
     public class FoodAPIService : IFoodAPIService
     {
-        private readonly ILogger<FoodAPIService> _logger;
         private readonly IConfiguration _configuration;
         private readonly string _key;
         private readonly string _url;
         private readonly HttpClient _httpClient;
 
-        public FoodAPIService(ILogger<FoodAPIService> logger, IConfiguration configuration)
+        public FoodAPIService(IConfiguration configuration)
         {
-            this._logger = logger;
             this._configuration = configuration;
             this._key = _configuration["USDAFoodAPI:Key"];
             this._url = _configuration["USDAFoodAPI:URL"];
