@@ -44,7 +44,6 @@ namespace FitMealUtilities
 
             foreach (JObject nutrientJSON in nutritionJSON)
             {
-                
                 if ((int)nutrientJSON["nutrientId"] == 1003)
                 {
                     protein = ExtractNutrient(nutrientJSON);

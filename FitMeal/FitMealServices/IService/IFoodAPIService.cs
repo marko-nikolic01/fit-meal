@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitMealModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace FitMealServices.IService
 {
     public interface IFoodAPIService
     {
-        Task<string> GetFoods();
+        Task<Task<List<Food>> GetFoods();
     }
 }

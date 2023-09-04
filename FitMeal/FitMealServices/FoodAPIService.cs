@@ -28,7 +28,7 @@ namespace FitMealServices
             this._httpClient = new HttpClient();
         }
 
-        public async Task<string> GetFoods()
+        public async Task<List<Food>> GetFoods()
         {
             try
             {
@@ -41,25 +41,16 @@ namespace FitMealServices
                     var content = await response.Content.ReadAsStringAsync();
                     FoodAPIResponseConverter converter = new FoodAPIResponseConverter();
                     List<Food> foods = converter.ConvertFoodSearch(content);
-                    
-                    foreach (Food food in foods)
-                    {
-                        string log = "\nID: " + food.Id + "\nName: " + food.Name +
-                            "\nNutrition: " + "\n\tEnergy: " + food.Nutrition.Energy.Amount + "\n\tProtein: " + food.Nutrition.Protein.Amount + "\n\tCarbohydrates: " + food.Nutrition.Carbohydrates.Amount + "\n\tFats: " + food.Nutrition.Fats.Amount + "\n";
-                        _logger.LogInformation(log);
-                    }
-                    //_logger.LogInformation(content);
-                    return content;
+
+                    return foods;
                 }
                 else
                 {
-                    // Handle API error responses here
                     return null;
                 }
             }
             catch (HttpRequestException e)
             {
-                // Handle network or connection errors here
                 Console.WriteLine($"Error: {e.Message}");
                 return null;
             }
