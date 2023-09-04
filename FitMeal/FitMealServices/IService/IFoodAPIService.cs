@@ -9,6 +9,6 @@ namespace FitMealServices.IService
 {
     public interface IFoodAPIService
     {
-        Task<Task<List<Food>> GetFoods();
+        Task<List<Food>> GetFoods();
     }
 }
