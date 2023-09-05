@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Microsoft.Extensions.Logging;
+using FitMealUtilities.Converters.IConverter;
 
 namespace FitMealUtilities.Converters
 {
-    public class FoodAPIResponseConverter
+    public class FoodAPIResponseConverter : IFoodAPIResponseConverter
     {
         public FoodAPIResponseConverter() { }
 
