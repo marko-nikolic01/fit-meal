@@ -4,6 +4,8 @@ using FitMealDataAccess.Repository;
 using Microsoft.EntityFrameworkCore;
 using FitMealServices.IService;
 using FitMealServices;
+using FitMealUtilities.Converters.IConverter;
+using FitMealUtilities.Converters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,8 @@ builder.Services.AddScoped<IJWTService, JWTService>();
 builder.Services.AddScoped<ISignUpService, SignUpService>();
 builder.Services.AddScoped<ISignInService, SignInService>();
 builder.Services.AddScoped<IFoodAPIService, FoodAPIService>();
+
+builder.Services.AddScoped<IFoodAPIResponseConverter, FoodAPIResponseConverter>();
 
 // Enable CORS
 builder.Services.AddCors(options =>
