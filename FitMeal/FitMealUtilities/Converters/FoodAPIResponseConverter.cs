@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Microsoft.Extensions.Logging;
 
-namespace FitMealUtilities
+namespace FitMealUtilities.Converters
 {
     public class FoodAPIResponseConverter
     {
-        public FoodAPIResponseConverter() {}
+        public FoodAPIResponseConverter() { }
 
         public List<Food> ConvertFoodSearch(string response)
         {
@@ -48,7 +48,7 @@ namespace FitMealUtilities
                 {
                     protein = ExtractNutrient(nutrientJSON);
                 }
-                else if((int)nutrientJSON["nutrientId"] == 1004)
+                else if ((int)nutrientJSON["nutrientId"] == 1004)
                 {
                     fats = ExtractNutrient(nutrientJSON);
                 }
