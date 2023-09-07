@@ -5,8 +5,10 @@ function NavigationBarItem(props) {
 
     return (
         <>
-            <div className='navigation-bar-item'>
-                {content}
+            <div className={`navigation-bar-item background-${theme}-primary text-${theme}-primary`}>
+                <div className={`navigation-bar-item-content`}>
+                    {content}
+                </div>
             </div>
         </>
     )

@@ -1,5 +1,25 @@
 .navigation-bar-item {
-    padding-left: 20px;
-    padding-right: 20px;
+    width: stretch;
+    height: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.navigation-bar-item-content {
+    text-align: center;
     font-size: 18px;
+}
+
+.navigation-bar-item:hover {
+    background-color: #75bd15;
+    color: white;
+}
+
+@media (max-width: 640px) {
+    .navigation-bar-item-content {
+        text-align: center;
+        font-size: 15px;
+    }
 }

@@ -10,9 +10,10 @@ function NavigationBar(props) {
     return (
         <>
             <div className={`navigation-bar background-${theme}-primary`}>
-                <NavigationBarItem content='ok' />
-                <NavigationBarItem content='lol' />
-                <NavigationBarItem content='lmao' />
+                <NavigationBarItem theme={theme} content='Home' />
+                <NavigationBarItem theme={theme} content='Foods' />
+                <NavigationBarItem theme={theme} content='Diary' />
+                <NavigationBarItem theme={theme} content='Meal maker' />
             </div>
         </>
     )
