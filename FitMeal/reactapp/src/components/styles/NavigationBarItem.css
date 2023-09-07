@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background-color opacity 0.15s;
+    transition: all 0.15s;
 }
 
 .navigation-bar-item-content {
@@ -20,7 +20,7 @@
 }
 
 .navigation-bar-item-background-light-primary {
-    background-color: white;
+    background-color: #202A44;
 }
 
 .navigation-bar-item-background-light-secondary {

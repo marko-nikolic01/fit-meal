@@ -10,7 +10,7 @@ function NavigationBarItem(props) {
 
     return (
         <>
-            <div className={`navigation-bar-item navigation-bar-item-background-${theme}-${isSelected ? 'secondary' : 'primary'} text-${theme}-${isSelected ? 'secondary' : 'primary'}`} onClick={navigate}>
+            <div className={`navigation-bar-item navigation-bar-item-background-${theme}-${isSelected ? 'secondary' : 'primary'} text-${theme}-secondary`} onClick={navigate}>
                 <div className={`navigation-bar-item-content`}>
                     {content}
                 </div>

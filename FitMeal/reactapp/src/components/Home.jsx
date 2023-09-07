@@ -7,7 +7,7 @@ function Home(props) {
     return (
         <>
             {isUserAuthenticated
-                ? <div className='home'>Welcome!</div>
+                ? <div className={`home background-${theme}-secondary`}></div>
                 : <UnauthorizedAccess theme={theme} />
             } 
         </>
