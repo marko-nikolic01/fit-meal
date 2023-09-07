@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import './styles/NavigationBar.css'
 import NavigationBarItem from './NavigationBarItem.jsx'

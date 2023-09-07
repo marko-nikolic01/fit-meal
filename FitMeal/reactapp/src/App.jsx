@@ -39,7 +39,7 @@ function App() {
                     <Route index element={<Welcome theme={theme} />} />
                     <Route path="/signin" element={<SignIn theme={theme} setIsUserAuthenticated={setIsUserAuthenticated} />} />
                     <Route path="/signup" element={<SignUp theme={theme} setIsUserAuthenticated={setIsUserAuthenticated} />} />
-                    <Route path="/home" element={<Home theme={theme} />} />
+                    <Route path="/home" element={<Home theme={theme} isUserAuthenticated={isUserAuthenticated} />} />
                 </Routes>
             </BrowserRouter>
             <Footer theme={theme} toggleTheme={toggleTheme} />
