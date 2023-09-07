@@ -31,7 +31,9 @@ namespace FitMealServices
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Name, user.Username)
             }),
                 Expires = DateTime.UtcNow.AddMinutes(30),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(_key), SecurityAlgorithms.HmacSha256Signature)

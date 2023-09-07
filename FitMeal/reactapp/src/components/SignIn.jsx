@@ -17,8 +17,6 @@ function SignIn(props) {
         password: ""
     })
 
-    console.log('render')
-
     useEffect(() => {
         validate(form);
     }, [validationErrors]);
@@ -85,7 +83,6 @@ function SignIn(props) {
                 if (error.response.status === 401) {
                     errors.emailOrUsername = 'Invalid credentials.'
                     errors.password = 'Invalid credentials.'
-                    console.log('hahaha')
                 }
                 setValidationErrors(errors)
             });
