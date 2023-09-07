@@ -1,12 +1,13 @@
+import './styles/Home.css'
 import UnauthorizedAccess from './UnauthorizedAccess.jsx'
 
 function Home(props) {
-    const { theme, isUserSignedIn } = props
+    const { theme, isUserAuthenticated } = props
 
     return (
         <>
-            {isUserSignedIn
-                ? <div>Welcome!</div>
+            {isUserAuthenticated
+                ? <div className='home'>Welcome!</div>
                 : <UnauthorizedAccess theme={theme} />
             } 
         </>

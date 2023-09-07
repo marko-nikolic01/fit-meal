@@ -8,6 +8,7 @@ import Footer from './components/Footer.jsx'
 import SignIn from './components/SignIn.jsx'
 import SignUp from './components/SignUp.jsx'
 import Home from './components/Home.jsx'
+import NavigationBar from './components/NavigationBar.jsx'
 
 function App() {
     const [theme, setTheme] = useState(() => {
@@ -35,6 +36,7 @@ function App() {
         <>
             <BrowserRouter>
                 <Header theme={theme} isUserAuthenticated={isUserAuthenticated} setIsUserAuthenticated={setIsUserAuthenticated} />
+                {isUserAuthenticated && <NavigationBar theme={theme} />}
                 <Routes>
                     <Route index element={<Welcome theme={theme} />} />
                     <Route path="/signin" element={<SignIn theme={theme} setIsUserAuthenticated={setIsUserAuthenticated} />} />

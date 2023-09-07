@@ -1,2 +1,14 @@
-body {
+.navigation-bar {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    box-shadow: 0 3px 7px rgba(200, 200, 200, 0.6);
+    position: relative;
+    z-index: 99;
+}
+
+@media (max-width: 640px) {
+    .navigation-bar {
+        height: 40px;
+    }
 }
