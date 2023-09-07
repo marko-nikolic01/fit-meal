@@ -21,6 +21,7 @@ function validateEmailOrUsername(emailOrUsername) {
     const isValid = emailRegex.test(emailOrUsername) || usernameRegex.test(emailOrUsername)
     if (!isValid) {
         errorMessages.emailOrUsername = "Invalid e-mail or username format."
+        return
     }
 
     if (emailOrUsername.length > 254) {
@@ -32,6 +33,7 @@ function validateEmailOrUsername(emailOrUsername) {
 function validatePassword(password) {
     if (password === "") {
         errorMessages.password = "Password is required."
+        return
     }
 
     if (password.length < 8) {
@@ -43,6 +45,7 @@ function validatePassword(password) {
     const isValid = passwordRegex.test(password)
     if (!isValid) {
         errorMessages.password = "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and no spaces."
+        return
     }
 
     if (password.length > 30) {

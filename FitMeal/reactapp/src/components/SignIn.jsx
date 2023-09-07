@@ -17,6 +17,8 @@ function SignIn(props) {
         password: ""
     })
 
+    console.log('render')
+
     useEffect(() => {
         validate(form);
     }, [validationErrors]);
@@ -59,8 +61,10 @@ function SignIn(props) {
     }
 
     function signIn() {
+        const errors = validate(form)
         setValidationErrors(() => validate(form))
-        if (validationErrors.emailOrUsername || validationErrors.password) {
+        if (errors.emailOrUsername || errors.password) {
+            setValidationErrors(errors)
             return
         }
         handleSignInRequest()
@@ -70,15 +74,18 @@ function SignIn(props) {
         const errors = { emailOrUsername: '', password: '' }
         axios.post('https://localhost:7166/api/users/signin', form)
             .then(response => {
-                setValidationErrors(errors)
-                setToken(response.data.token)
-                setIsUserAuthenticated(true)
-                toHome()
+                if (response.status === 200) {
+                    setValidationErrors(errors)
+                    setToken(response.data.token)
+                    setIsUserAuthenticated(true)
+                    toHome()
+                }
             })
             .catch(error => {
                 if (error.response.status === 401) {
-                    errors.email = 'Invalid credentials.'
-                    errors.username = 'Invalid credentials.'
+                    errors.emailOrUsername = 'Invalid credentials.'
+                    errors.password = 'Invalid credentials.'
+                    console.log('hahaha')
                 }
                 setValidationErrors(errors)
             });

@@ -83,10 +83,12 @@ function SignIn(props) {
         const errors = { email: "", username: "", password: "", repeatPassword: "" }
         axios.post("https://localhost:7166/api/users/signup", form)
             .then(response => {
-                setValidationErrors(errors)
-                setToken(response.data.token)
-                setIsUserAuthenticated(true)
-                toHome()
+                if (response.status === 200) {
+                    setValidationErrors(errors)
+                    setToken(response.data.token)
+                    setIsUserAuthenticated(true)
+                    toHome()
+                }
             })
             .catch(error => {
                 if (error.response.status === 409) {

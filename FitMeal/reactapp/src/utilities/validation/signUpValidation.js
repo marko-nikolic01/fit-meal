@@ -26,6 +26,7 @@ function validateEmail(email) {
     const isValid = emailRegex.test(email)
     if (!isValid) {
         errorMessages.email = "Invalid e-mail format."
+        return
     }
 
     if (email.length > 254) {
@@ -44,6 +45,7 @@ function validateUsername(username) {
     const isValid = usernameRegex.test(username)
     if (!isValid) {
         errorMessages.username = "Username must only contain letters, digits, and underscores."
+        return
     }
 
     if (username.length > 30) {
@@ -55,6 +57,7 @@ function validateUsername(username) {
 function validatePassword(password) {
     if (password === "") {
         errorMessages.password = "Password is required."
+        return
     }
 
     if (password.length < 8) {
@@ -66,6 +69,7 @@ function validatePassword(password) {
     const isValid = passwordRegex.test(password)
     if (!isValid) {
         errorMessages.password = "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and no spaces."
+        return
     }
 
     if (password.length > 30) {
@@ -77,6 +81,7 @@ function validatePassword(password) {
 function validateRepeatPassword(repeatPassword) {
     if (repeatPassword === "") {
         errorMessages.repeatPassword = "Password is required."
+        return
     }
 
     if (repeatPassword.length < 8) {
@@ -88,6 +93,7 @@ function validateRepeatPassword(repeatPassword) {
     const isValid = passwordRegex.test(repeatPassword)
     if (!isValid) {
         errorMessages.repeatPassword = "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and no spaces."
+        return
     }
 
     if (repeatPassword.length > 30) {
