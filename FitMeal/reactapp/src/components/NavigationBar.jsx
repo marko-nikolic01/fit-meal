@@ -11,7 +11,7 @@ function NavigationBar(props) {
 
     return (
         <>
-            <div className={`navigation-bar`}>
+            <div className={`navigation-bar background-${theme}-primary`}>
                 <NavigationBarItem theme={theme} content='Home' isSelected={selectedTab === 'Home' ? true : false} setSelectedTab={setSelectedTab} />
                 <NavigationBarItem theme={theme} content='Foods' isSelected={selectedTab === 'Foods' ? true : false} setSelectedTab={setSelectedTab} />
                 <NavigationBarItem theme={theme} content='Diary' isSelected={selectedTab === 'Diary' ? true : false} setSelectedTab={setSelectedTab} />

@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: background-color opacity 0.15s;
 }
 
 .navigation-bar-item-content {
@@ -15,6 +16,7 @@
 .navigation-bar-item:hover {
     background-color: #75bd15;
     color: white;
+    opacity: 0.9;
 }
 
 .navigation-bar-item-background-light-primary {
