@@ -6,37 +6,29 @@ using Microsoft.AspNetCore.Mvc;
 namespace FitMealAPI.Controllers
 {
     [ApiController]
-    [Route("api/users")]
-    public class FoodPIController : ControllerBase
+    [Route("api/foods")]
+    public class FoodAPIController : ControllerBase
     {
         private readonly IFoodAPIService _foodAPIService;
-        public FoodPIController(IFoodAPIService foodAPIService)
+        public FoodAPIController(IFoodAPIService foodAPIService)
         {
             this._foodAPIService = foodAPIService;
         }
 
 
-        [HttpPost("signup")]
+        [HttpGet("/search")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status409Conflict)]
         [Produces("application/json")]
-        public async Task<ActionResult> SignUp([FromBody] SignUpDTO dto)
+        public async Task<ActionResult> Search([FromQuery(Name = "query")] string query)
         {
-            if (!ModelState.IsValid)
+            if (query == "")
             {
-                return BadRequest();
+                return BadRequest(new { Message = "Your search query can't be empty." });
             }
 
-            if (_signUpService.IsUsernameOrEmailTaken(dto.Username, dto.Email))
-            {
-                return Conflict(new { Message = "Username or email is already in use." });
-            }
-
-            User user = new User(dto.Email, dto.Username, dto.Password);
-            _signUpService.SignUp(user);
-            string token = _JWTService.Generate(user);
-            return Ok(new { Token = token });
+            List<Food> foods = await _foodAPIService.SearchFoods(query);
+            return Ok(foods);
         }
     }
 }

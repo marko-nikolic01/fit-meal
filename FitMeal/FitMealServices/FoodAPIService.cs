@@ -26,11 +26,11 @@ namespace FitMealServices
             this._httpClient = new HttpClient();
         }
 
-        public async Task<List<Food>> GetFoods()
+        public async Task<List<Food>> SearchFoods(string query)
         {
             try
             {
-                var requestUri = $"{_url}foods/search?api_key={_key}&query=cheese&dataType={Uri.EscapeDataString("Survey (FNDDS)")}&pageSize=1";
+                var requestUri = $"{_url}foods/search?api_key={_key}&query={query}&dataType={Uri.EscapeDataString("Survey (FNDDS)")}&pageSize=20";
 
                 var response = await _httpClient.GetAsync(requestUri);
 

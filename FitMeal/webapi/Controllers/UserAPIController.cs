@@ -30,7 +30,7 @@ namespace FitMealAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [Produces("application/json")]
-        public async Task<ActionResult> SignUp([FromBody] SignUpDTO dto)
+        public ActionResult SignUp([FromBody] SignUpDTO dto)
         {
             if (!ModelState.IsValid)
             {
