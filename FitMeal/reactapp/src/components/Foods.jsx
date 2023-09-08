@@ -16,7 +16,7 @@ function Foods(props) {
             {isUserAuthenticated
                 ? <div className={`foods background-${theme}-secondary`}>
                     <div className='foods-search-bar'>
-                        <input className={`foods-search-bar-input text-${theme}-primary background-${theme}-primary border-${theme}-secondary`} type="text" placeholder="Search"/>
+                        <input className={`foods-search-bar-input text-${theme}-primary background-${theme}-primary border-${theme}-secondary`} type="text" placeholder="Search" value={search} onChange={handleChange} />
                         <button className={`foods-search-bar-button button-${theme}-primary`}>
                             <img className='foods-search-bar-button-icon' src="./images/Search.svg"></img>
                         </button>
