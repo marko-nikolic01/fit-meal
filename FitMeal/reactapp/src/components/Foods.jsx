@@ -7,7 +7,7 @@ function Foods(props) {
     return (
         <>
             {isUserAuthenticated
-                ? <div className='foods'>
+                ? <div className={`foods background-${theme}-secondary`}>
                     <div className='foods-search-bar'>
                         <input className={`foods-search-bar-input text-${theme}-primary background-${theme}-primary border-${theme}-primary`} type="text" placeholder="Search"/>
                         <button className='foods-search-bar-button'>
