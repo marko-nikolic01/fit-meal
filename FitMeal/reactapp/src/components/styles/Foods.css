@@ -6,5 +6,50 @@
     padding-right: 20px;
     padding-top: 25px;
     padding-bottom: 50px;
+    min-height: 100vh;
     height: stretch;
 }
+
+.foods-search-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+}
+
+.foods-search-bar-input {
+    height: 25px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 10px 0 0 10px;
+}
+
+.foods-search-bar-button {
+    font-size: 20px;
+    height: 47px;
+    width: 100px;
+    border: 1px solid;
+    border-color: #75bd15;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px;
+}
+
+.foods-search-bar-button-icon {
+    height: 25px;
+    position: center;
+}
+
+.foods-search-bar-button:hover {
+    opacity: 0.9;
+}
+
+.foods-search-bar-button:active {
+    opacity: 0.7;
+}
+

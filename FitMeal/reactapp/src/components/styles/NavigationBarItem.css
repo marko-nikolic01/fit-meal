@@ -19,6 +19,12 @@
     opacity: 0.9;
 }
 
+.navigation-bar-item:active {
+    background-color: #75bd15;
+    color: white;
+    opacity: 0.7;
+}
+
 .navigation-bar-item-background-light-primary {
     background-color: #202A44;
 }

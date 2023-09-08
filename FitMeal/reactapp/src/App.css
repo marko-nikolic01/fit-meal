@@ -113,6 +113,14 @@
     border: 1px solid #3e3e42;
 }
 
+.border-light-secondary {
+    border: 1px solid #75bd15;
+}
+
+.border-dark-secondary {
+    border: 1px solid #1e1e1e;
+}
+
 @media (max-width: 640px) {
     .background-picture-light {
         background-image: url('../public/images/HomeSectionBackgroundLightPhone.jpg');
