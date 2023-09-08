@@ -3,8 +3,8 @@
     padding-right: 20px;
     min-height: 100vh;
     padding-top: 25px;
-    padding-bottom: 575px;
-    height: 100%;
+    padding-bottom: 50px;
+    height: stretch;
 }
 
 .sign-in-form {

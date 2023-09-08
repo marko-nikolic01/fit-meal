@@ -36,26 +36,28 @@ function App() {
     return (
         <>
             <BrowserRouter>
-                <Header theme={theme} isUserAuthenticated={isUserAuthenticated} setIsUserAuthenticated={setIsUserAuthenticated} />
-                <Routes>
-                    <Route index element={<Welcome theme={theme} />} />
-                    <Route path="/signin" element={<SignIn theme={theme} setIsUserAuthenticated={setIsUserAuthenticated} />} />
-                    <Route path="/signup" element={<SignUp theme={theme} setIsUserAuthenticated={setIsUserAuthenticated} />} />
-                    <Route path="/home" element={
-                        <>
-                            <NavigationBar theme={theme} selectedTab='Home' />
-                            <Home theme={theme} isUserAuthenticated={isUserAuthenticated} />
-                        </>
-                    } />
-                    <Route path="/foods" element={
-                        <>
-                            <NavigationBar theme={theme} selectedTab='Foods' />
-                            <Foods theme={theme} isUserAuthenticated={isUserAuthenticated} />
-                        </>
-                    } />
-                </Routes>
+                <div className='app-wrapper'>
+                    <Header theme={theme} isUserAuthenticated={isUserAuthenticated} setIsUserAuthenticated={setIsUserAuthenticated} />
+                    <Routes>
+                        <Route index element={<Welcome theme={theme} />} />
+                        <Route path="/signin" element={<SignIn theme={theme} setIsUserAuthenticated={setIsUserAuthenticated} />} />
+                        <Route path="/signup" element={<SignUp theme={theme} setIsUserAuthenticated={setIsUserAuthenticated} />} />
+                        <Route path="/home" element={
+                            <>
+                                <NavigationBar theme={theme} selectedTab='Home' />
+                                <Home theme={theme} isUserAuthenticated={isUserAuthenticated} />
+                            </>
+                        } />
+                        <Route path="/foods" element={
+                            <>
+                                <NavigationBar theme={theme} selectedTab='Foods' />
+                                <Foods theme={theme} isUserAuthenticated={isUserAuthenticated} />
+                            </>
+                        } />
+                    </Routes>
+                    <Footer theme={theme} toggleTheme={toggleTheme} />
+                </div>
             </BrowserRouter>
-            <Footer theme={theme} toggleTheme={toggleTheme} />
         </>
     )
 }

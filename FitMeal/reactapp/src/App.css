@@ -4,6 +4,12 @@
     font-family: Montserrat, Arial;
 }
 
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 #root {
     position: relative;
     min-height: 100vh;
