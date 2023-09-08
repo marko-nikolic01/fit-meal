@@ -36,7 +36,7 @@ namespace FitMealAPI.Controllers
                 return Unauthorized(new { Message = "JWT is invalid." });
             }
 
-            if (query == "")
+            if (string.IsNullOrWhiteSpace(query))
             {
                 return BadRequest(new { Message = "Your search query can't be empty." });
             }
