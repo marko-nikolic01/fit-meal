@@ -1,15 +1,34 @@
 import { useState } from "react"
+import validate from "../utilities/validation/signInValidation.js"
+import axios from "axios"
 import './styles/Foods.css'
 import UnauthorizedAccess from './UnauthorizedAccess.jsx'
 
 function Foods(props) {
     const { theme, isUserAuthenticated } = props
-    const [search, setSearch] = useState("opened")
+    const [searchQuery, setsearchQuery] = useState("")
 
     function handleChange(event) {
         const { value } = event.target
-        setSearch(value)
+        setsearchQuery(value)
     }
+
+    function search() {
+        if (validate(searchQuery)) {
+            //handleSearchRequest()
+        }
+    }
+
+   /* async function handleSearchRequest() {
+        const errors = { emailOrUsername: '', password: '' }
+        axios.post('https://localhost:7166/api/food/signin', form)
+            .then(response => {
+                if (response.status === 200) {
+                }
+            })
+            .catch(error => {
+            });
+    }*/
 
     return (
         <>

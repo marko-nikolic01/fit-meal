@@ -1,5 +1,5 @@
-function validate(search) {
-    if (search === "") {
+function validate(searchQuery) {
+    if (searchQuery === "") {
         return false
     }
     return true
