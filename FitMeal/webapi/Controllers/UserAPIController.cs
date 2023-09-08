@@ -17,10 +17,10 @@ namespace FitMealAPI.Controllers
         private readonly IJWTService _JWTService;
         private readonly ISignUpService _signUpService;
         private readonly ISignInService _signInService;
-        public UserAPIController(IJWTService jWTService, ISignUpService signUpService, ISignInService signInService)
+        public UserAPIController(IJWTService JWTService, ISignUpService signUpService, ISignInService signInService)
         {
             this._signUpService = signUpService;
-            this._JWTService = jWTService;
+            this._JWTService = JWTService;
             this._signInService = signInService;
         }
 

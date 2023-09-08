@@ -1,5 +1,6 @@
 ﻿using FitMealModels;
 using FitMealServices.IService;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Linq;
@@ -16,13 +17,13 @@ namespace FitMealServices
     public class JWTService : IJWTService
     {
         private readonly IConfiguration _configuration;
-        private readonly byte[] _key;
+        private readonly string _key;
         private readonly JwtSecurityTokenHandler _tokenHandler;
 
         public JWTService(IConfiguration configuration)
         {
             this._configuration = configuration;
-            this._key = Encoding.ASCII.GetBytes(_configuration["JWTKey"]);
+            this._key = _configuration["JWTKey"];
             this._tokenHandler = new JwtSecurityTokenHandler();
         }
 
@@ -37,7 +38,7 @@ namespace FitMealServices
                 new Claim(ClaimTypes.Name, user.Username)
             }),
                 Expires = DateTime.UtcNow.AddMinutes(30),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(_key), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_key)), SecurityAlgorithms.HmacSha256Signature)
             };
 
             var token = _tokenHandler.CreateToken(tokenDescriptor);
@@ -48,9 +49,11 @@ namespace FitMealServices
         {
             var validationParameters = new TokenValidationParameters
             {
+                ValidateIssuer = false,
+                ValidateAudience = false,
                 ValidateLifetime = true,
                 ClockSkew = TimeSpan.Zero,
-                IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(_configuration["JWTKey"]))
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_key))
             };
 
             try
