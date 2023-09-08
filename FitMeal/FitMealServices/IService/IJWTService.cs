@@ -10,5 +10,6 @@ namespace FitMealServices.IService
     public interface IJWTService
     {
         string Generate(User user);
+        bool Validate(string token);
     }
 }

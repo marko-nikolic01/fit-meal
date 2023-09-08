@@ -2,6 +2,7 @@
 using FitMealServices.IService;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -41,6 +42,27 @@ namespace FitMealServices
 
             var token = _tokenHandler.CreateToken(tokenDescriptor);
             return _tokenHandler.WriteToken(token);
+        }
+
+        public bool Validate(string token) 
+        {
+            var validationParameters = new TokenValidationParameters
+            {
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero,
+                IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(_configuration["JWTKey"]))
+            };
+
+            try
+            {
+                SecurityToken validatedToken;
+                var principal = _tokenHandler.ValidateToken(token, validationParameters, out validatedToken);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
