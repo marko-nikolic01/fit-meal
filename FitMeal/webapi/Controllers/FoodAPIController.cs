@@ -21,7 +21,7 @@ namespace FitMealAPI.Controllers
         }
 
 
-        [HttpGet("/search")]
+        [HttpGet("search")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Produces("application/json")]
@@ -42,7 +42,7 @@ namespace FitMealAPI.Controllers
             }
 
             List<Food> foods = await _foodAPIService.SearchFoods(query);
-            return Ok(foods);
+            return Ok(new { Foods = foods });
         }
     }
 }
