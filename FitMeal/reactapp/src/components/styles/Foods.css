@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-
+    margin-bottom: 30px;
 }
 
 .foods-search-bar-input {
@@ -38,6 +38,7 @@
     align-items: center;
     justify-content: center;
     padding: 11px;
+    transition: opacity 0.15s;
 }
 
 .foods-search-bar-button-icon {
@@ -53,3 +54,62 @@
     opacity: 0.7;
 }
 
+.foods-item-list {
+    width: 100%;
+    max-height: 100vh;
+    padding-right: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.foods-item-list::-webkit-scrollbar {
+    width: 15px;
+}
+
+.foods-item-list::-webkit-scrollbar-track {
+    background-color: #75bd1555;
+    border-radius: 8px;
+}
+
+.foods-item-list::-webkit-scrollbar-thumb {
+    background: #75bd15;
+    border-radius: 8px;
+}
+
+@media (max-width: 640px) {
+    .foods {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 20px;
+    }
+
+    .foods-search-bar-input {
+        height: 15px;
+        font-size: 15px;
+    }
+
+    .foods-search-bar-button {
+        font-size: 15px;
+        height: 37px;
+    }
+
+    .foods-search-bar-button-icon {
+        height: 20px;
+    }
+
+    .foods-item-list {
+        padding-right: 5px;
+    }
+
+    .foods-item-list::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .foods-item-list::-webkit-scrollbar-track {
+        border-radius: 5px;
+    }
+
+    .foods-item-list::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+    }
+}

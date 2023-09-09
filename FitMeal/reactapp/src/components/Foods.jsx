@@ -4,6 +4,7 @@ import { getToken, authorize } from "../utilities/security/JWTSecurity.js"
 import axios from "axios"
 import './styles/Foods.css'
 import UnauthorizedAccess from './UnauthorizedAccess.jsx'
+import FoodsItem from './FoodsItem.jsx'
 
 function Foods(props) {
     const { theme, isUserAuthenticated } = props
@@ -26,11 +27,20 @@ function Foods(props) {
             .then(response => {
                 if (response.status === 200) {
                     setFoods(response.data.foods)
-                    console.log(foods)
                 }
             })
             .catch(error => {
             });
+    }
+
+    function ItemList() {
+        return (
+            <div className='foods-item-list'>
+                {foods.map(food => (
+                    <FoodsItem theme={theme} food={food} />
+                ))}
+            </div>
+        );
     }
 
     return (
@@ -43,6 +53,7 @@ function Foods(props) {
                             <img className='foods-search-bar-button-icon' src="./images/Search.svg"></img>
                         </button>
                     </div>
+                    <ItemList />
                 </div>
                 : <UnauthorizedAccess theme={theme} />
             }
